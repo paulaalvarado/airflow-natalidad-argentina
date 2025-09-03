@@ -1,0 +1,26 @@
+project:
+  name: natalidad-argentina
+
+airflow:
+  connections:
+    - conn_id: indec_api
+      conn_type: http
+      host: https://www.indec.gob.ar/
+
+webserver:
+  web_server_port: 8080
+
+scheduler:
+  num_runs: -1
+
+dags:
+  path: /usr/local/airflow/dags
+
+logging:
+  level: INFO
+
+volumes:
+  - host_path: ./data
+    container_path: /usr/local/airflow/data
+  - host_path: ./dags
+    container_path: /usr/local/airflow/dags
